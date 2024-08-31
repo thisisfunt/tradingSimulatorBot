@@ -14,3 +14,12 @@ Simple bot for simulate trading on stoke market
 2. Activate venv `.\venv\Scripts\activate.bat`
 3. Install all requirements `pip install -r .\requirements.txt`
 4. Edit .env file in "backend" (input your values)
+
+## Arch. details
+### classes:
+**Share class**: a class whose objects store information about the company's shares
+### modules:
+**main.py**: run application <br>
+**controllers.py**: take data from model.py, put view.py and send answers<br>
+**view.py**: get data and return answer for user <br>
+**model.py**: update data (prices) in cash, make transactions and return data from cash
