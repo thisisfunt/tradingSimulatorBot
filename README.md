@@ -21,5 +21,5 @@ Simple bot for simulate trading on stoke market
 ### modules:
 **main.py**: run application <br>
 **controllers.py**: take data from model.py, put view.py and send answers<br>
-**view.py**: get data and return answer for user <br>
-**model.py**: update data (prices) in cash, make transactions and return data from cash
+**views.py**: get data and return answer for user <br>
+**models.py**: update data (prices) in cash, make transactions and return data from cash
