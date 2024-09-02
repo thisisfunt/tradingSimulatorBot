@@ -8,13 +8,31 @@ class Share:
         self.prices = []
         self.dates = []
         self.actual_price = None
+        self.isRising = None
+        self.update()
     
     def update(self):
+        self.prices = []
+        self.dates = []
         today_str = str(datetime.date.today())
         two_week_ago_str = datetime.datetime.today() - datetime.timedelta(days=14)
         res = requests.get(f"http://iss.moex.com/iss/engines/stock/markets/shares/securities/{self.code}/candles.json?from={two_week_ago_str}&till={today_str}&interval=24")
         data = res.json()["candles"]["data"]
         for day in data:
-            self.prices = day[1].split(" ")
-            self.dates = day[7].split(" ")[0]
+            self.prices.append(day[1])
+            self.dates.append(day[7].split(" ")[0])
         self.actual_price = self.prices[-1]
+        self.isRising = self.prices[-1] > self.prices[-2]
+
+
+shares = [
+    Share("SBER"),
+    Share("VTBR"),
+    Share("YDEX"),
+    Share("VKCO"),
+    Share("MGNT"),
+    Share("OZON"),
+    Share("AFLT"),
+    Share("SMLT"),
+    Share("MTLR")
+]
