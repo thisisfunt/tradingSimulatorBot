@@ -3,8 +3,9 @@ import requests
 
 
 class Share:
-    def __init__(self, code) -> None:
+    def __init__(self, code, company_name) -> None:
         self.code = code
+        self.company_name = company_name
         self.prices = []
         self.dates = []
         self.actual_price = None
@@ -26,13 +27,12 @@ class Share:
 
 
 shares = [
-    Share("SBER"),
-    Share("VTBR"),
-    Share("YDEX"),
-    Share("VKCO"),
-    Share("MGNT"),
-    Share("OZON"),
-    Share("AFLT"),
-    Share("SMLT"),
-    Share("MTLR")
+    Share("SBER", "СБЕР"),
+    Share("VTBR", "ВТБ"),
+    Share("YDEX", "Яндекс"),
+    Share("VKCO", "Вконтакте"),
+    Share("MGNT", "Магнит"),
+    Share("OZON", "Озон"),
+    Share("AFLT", "Аэрофлот"),
+    Share("SMLT", "Самолёт")
 ]

@@ -11,7 +11,7 @@ def getQuotesList(message: Message, shares) -> Message:
     answer = "Список котировок биржы:\n\n"
     for share in shares:
         growEmoji =  "🟢" if share.isRising else "🔴"
-        answer += growEmoji + " " + share.code + ": " + str(share.actual_price) + " рублей\n"
+        answer += growEmoji + " " + share.company_name + ": " + str(share.actual_price) + " рублей\n"
     answer += "\n"
     return message.answer(answer)
 
@@ -19,6 +19,6 @@ def getMainMenuMessage(message: Message, shares) -> Message:
     answer = "Ваш счёт:\nЦена ваших акций:\n\nРастущие акции: \n"
     for share in shares:
         if share.isRising:
-            answer += " " + share.code + ": " + str(share.actual_price) + " рублей\n"
+            answer += " " + share.company_name + ": " + str(share.actual_price) + " рублей\n"
     return message.answer(answer)
-    
+
