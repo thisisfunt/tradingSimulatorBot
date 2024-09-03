@@ -15,6 +15,6 @@ async def command_start_handler(message: Message) -> None:
 @dispatcher.message()
 async def message_handler(message: Message) -> None:
     if message.text == "Счёт":
-        await views.getQuotesList(message, models.shares)
-    elif message.text == "Список акций":
         await views.getMainMenuMessage(message, models.shares)
+    elif message.text == "Список акций":
+        await views.getQuotesList(message, models.shares)
