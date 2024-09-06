@@ -1,7 +1,8 @@
 import datetime
 import requests
 import matplotlib.pyplot as plt
-
+import schemas
+from sqlalchemy.orm import Session
 
 class Share:
     def __init__(self, code, company_name) -> None:
@@ -37,6 +38,16 @@ class Share:
         plt.grid(True)
         line_chart_file_name = f"line_charts/{self.code}.png"
         plt.savefig(line_chart_file_name)
+
+
+def create_user_if_not_exist(tg_id: int):
+    try:
+        with Session(schemas.engine) as session:
+            user = schemas.User(tg_id=tg_id, amount=50000)
+            session.add(user)
+            session.commit()
+    except:
+        pass
 
 
 shares = [
