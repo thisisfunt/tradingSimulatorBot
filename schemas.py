@@ -14,7 +14,7 @@ class Base(DeclarativeBase):
 
 class User(Base):
     __tablename__="user"
-    tg_id: Mapped[int] = mapped_column(Integer())
+    tg_id: Mapped[int] = mapped_column(Integer(), unique=True)
     amount: Mapped[float] = mapped_column(Float())
 
 if __name__ == "__main__":
