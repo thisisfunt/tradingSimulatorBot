@@ -14,6 +14,9 @@ Simple bot for simulate trading on stoke market
 2. Activate venv `.\venv\Scripts\activate.bat`
 3. Install all requirements `pip install -r .\requirements.txt`
 4. Edit .env file in "backend" (input your values)
+5. Create database (if not exist) in MySQL
+6. Create tables use `python schemas.py`
+7. run project use `python main.py`
 
 ## Arch. details
 ### classes:
