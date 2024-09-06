@@ -4,28 +4,28 @@ from aiogram.types import FSInputFile, KeyboardButton, ReplyKeyboardMarkup
 
 
 def getWelcomeMessage(message: Message) -> Message:
-    answer = "Привет, {message.from_user.first_name}! Добро пожаловать в симулятор торговли на бирже!\n\n" \
+    answer = f"Привет, {message.from_user.first_name}! Добро пожаловать в симулятор торговли на бирже!\n\n" \
     "Здесь ты можешь отточить свои навыки торговли, провепить новые стратегии или просто развлечься.\n" \
     "Все котировки акций реальны, взяты с MOEX"
     return message.answer(answer)
 
 
-def getQuotesList(message: Message, shares: list, share_company_names: list) -> Message:
-    answer = "Список котировок биржы:\n\n"
-    for share in shares:
-        growEmoji =  "🟢" if share.isRising else "🔴"
-        answer += growEmoji + " " + share.company_name + ": " + str(share.actual_price) + " рублей\n"
-    answer += "\n"
-    return message.answer(answer)
-
-
-def getMainMenuMessage(message: Message, shares: list) -> Message:
+def getAmountMessage(message: Message, shares: list) -> Message:
     answer = "Ваш счёт:\n" \
     "Цена ваших акций:" \
     "\n\nРастущие акции: \n"
     for share in shares:
         if share.isRising:
             answer += " " + share.company_name + ": " + str(share.actual_price) + " рублей\n"
+    return message.answer(answer)
+
+
+def getQuotesList(message: Message, shares: list) -> Message:
+    answer = "Список котировок биржы:\n\n"
+    for share in shares:
+        growEmoji =  "🟢" if share.isRising else "🔴"
+        answer += growEmoji + " " + share.company_name + ": " + str(share.actual_price) + " рублей\n"
+    answer += "\n"
     return message.answer(answer)
 
 
