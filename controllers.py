@@ -17,7 +17,8 @@ async def command_start_handler(message: Message) -> None:
 @dispatcher.message()
 async def message_handler(message: Message) -> None:
     if message.text == "Счёт":
-        await views.get_amount_message(message, models.shares)
+        amount = models.get_user_amount(message.from_user.id)
+        await views.get_amount_message(message, amount, models.shares)
     elif message.text == "Список акций":
         await views.get_quotes_list(message, models.shares)
     elif message.text in models.share_company_names:

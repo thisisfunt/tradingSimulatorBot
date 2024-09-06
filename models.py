@@ -3,6 +3,8 @@ import requests
 import matplotlib.pyplot as plt
 import schemas
 from sqlalchemy.orm import Session
+from sqlalchemy import select
+
 
 class Share:
     def __init__(self, code, company_name) -> None:
@@ -49,6 +51,16 @@ def create_user_if_not_exist(tg_id: int):
     except:
         pass
 
+
+def get_user_amount(tg_id):
+    try:
+        with Session(schemas.engine) as session:
+            statement = select(schemas.User).where(schemas.User.tg_id==tg_id)
+            result = session.execute(statement)
+            amount = result.fetchone()[0].amount
+            return amount
+    except:
+        pass
 
 shares = [
     Share("SBER", "СБЕР"),

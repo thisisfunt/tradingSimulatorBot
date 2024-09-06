@@ -10,8 +10,8 @@ def get_welcome_message(message: Message) -> Message:
     return message.answer(answer)
 
 
-def get_amount_message(message: Message, shares: list) -> Message:
-    answer = "Ваш счёт:\n" \
+def get_amount_message(message: Message, amount: float, shares: list) -> Message:
+    answer = f"Ваш счёт: {amount} рублей\n" \
     "Цена ваших акций:" \
     "\n\nРастущие акции: \n"
     for share in shares:
